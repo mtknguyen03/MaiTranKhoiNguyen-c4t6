@@ -1,6 +1,6 @@
 name = input("What's your name? ")
 player = {
-    "Name": name,
+    "NAME": name,
     "CLASS": "Greek demigod",
     "WEAPON": "Sword",
     "HP": 100,
@@ -10,9 +10,9 @@ player = {
     "LVL": 1,
     "LUCK": 10,
 }
-cmd = input("Your command: ")
+cmd = input("Your command (stats, start): ")
 if cmd == "stats":
-    print("NAME:", player["Name"])
+    print("NAME:", player["NAME"])
     print("CLASS", player["CLASS"])
     print("HP", player["HP"])
     print("STR", player["STR"])
@@ -56,7 +56,7 @@ elif cmd == "Start" or cmd == "start":
         print("GAME OVER")
     elif choice == "3":
         hound = {
-            "Name": "young hellhound",
+            "NAME": "young hellhound",
             "CLASS": "Hellhound(Obviously!)",
             "HP": 50,
             "STR": 10,
@@ -64,7 +64,7 @@ elif cmd == "Start" or cmd == "start":
             "AGI": 1,
             "LVL": 1,
         }
-        print("OPPONENT:", hound["Name"])
+        print("OPPONENT:", hound["NAME"])
         print("CLASS:", hound["CLASS"])
         print("HP:", hound["HP"])
         print("STRENGTH:", hound["STR"])
@@ -75,88 +75,40 @@ elif cmd == "Start" or cmd == "start":
         print("You and the hound see each other")
         print("You take out your sword and make the first move!")
         print("WAIT, I forgot to told you that you have a sword?!?!")
+        print("How do I forget that?!?!")
         print("Let just ... accept it,ok?")
         print("After all, you wouldn't want to fight with your bare hands!")
         print("anyway")
         print("you are the first one to attack!")
 
-        print("You swing your sword!")
-        damage = player["STR"] - hound["DEF"]
-        print("Damage:", damage)
-        if damage >= 0:
-            hound["HP"] -= damage
-            print("hound HP:", hound["HP"])
 
-        print("hound throw a claw!")
-        damage = hound["STR"] - player["DEF"]
-        print("Damage:", damage)
-        if damage >= 0:
-            player["HP"] -= damage
-            print("your HP:", player["HP"])
+        def combat(attacker, defender):
+            print(attacker["NAME"], "is trying to end", defender["NAME"], "life" "!")
+            damage = attacker["STR"] - defender["DEF"]
+            if damage > 0:
+                defender["HP"] -= damage
+                print(defender["NAME"], "lost", damage, "HP")
+            else:
+                attacker["HP"] -= abs(damage)
+                print(attacker["NAME"], "lost", abs(damage), "HP")
 
-        print("You swing your sword!")
-        damage = player["STR"] - hound["DEF"]
-        print("Damage:", damage)
-        if damage >= 0:
-            hound["HP"] -= damage
-            print("hound HP:", hound["HP"])
 
-        print("hound throw a claw!")
-        damage = hound["STR"] - player["DEF"]
-        print("Damage:", damage)
-        if damage >= 0:
-            player["HP"] -= damage
-            print("your HP:", player["HP"])
+        while True:
+            combat(player, hound)
+            print("Hellhound hp:", hound["HP"])
 
-        print("You swing your sword!")
-        damage = player["STR"] - hound["DEF"]
-        print("Damage:", damage)
-        if damage >= 0:
-            hound["HP"] -= damage
-            print("hound HP:", hound["HP"])
+            if hound["HP"] <= 0 or player["HP"] <= 0:
+                break
 
-        print("hound throw a claw!")
-        damage = hound["STR"] - player["DEF"]
-        print("Damage:", damage)
-        if damage >= 0:
-            player["HP"] -= damage
-            print("your HP:", player["HP"])
+            combat(hound, player)
+            print("Your hp:", player["HP"])
 
-        print("You swing your sword!")
-        damage = player["STR"] - hound["DEF"]
-        print("Damage:", damage)
-        if damage >= 0:
-            hound["HP"] -= damage
-            print("hound HP:", hound["HP"])
+            if hound["HP"] <= 0 or player["HP"] <= 0:
+                break
 
-        print("hound throw a claw!")
-        damage = hound["STR"] - player["DEF"]
-        print("Damage:", damage)
-        if damage >= 0:
-            player["HP"] -= damage
-            print("your HP:", player["HP"])
-
-        print("You swing your sword!")
-        damage = player["STR"] - hound["DEF"]
-        print("Damage:", damage)
-        if damage >= 0:
-            hound["HP"] -= damage
-            print("hound HP:", hound["HP"])
-
-        print("hound throw a claw!")
-        damage = hound["STR"] - player["DEF"]
-        print("Damage:", damage)
-        if damage >= 0:
-            player["HP"] -= damage
-            print("your HP:", player["HP"])
-
-        print("You swing your sword!")
-        damage = player["STR"] - hound["DEF"]
-        print("Damage:", damage)
-        if damage >= 0:
-            hound["HP"] -= damage
-            print("hound HP:", hound["HP"])
-
+        if player["HP"] <= 0:
+            print("Try again next time!")
+            print("Game Over")
         if hound["HP"] <= 0:
             print("The hellhound is defeated!")
             print("But...")
