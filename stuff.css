@@ -1,0 +1,34 @@
+#background-ele {
+    height: 500px;
+    width: 100%;
+    background-color: lightslategray;
+    background-image: url("https://scontent.fhan3-2.fna.fbcdn.net/v/t1.0-9/37189513_2103999293158191_4135006049423851520_o.jpg?_nc_cat=103&oh=4b057184fc7b8d8166e75bc9ad6af8bd&oe=5C2B136F");
+    background-size: profile;
+}
+#pp {
+    height: 255px;
+    width: 375px;
+    position: fixed;
+    top: 400px;
+    left: 70px;
+    border-width: 10px;
+    border-color: white;
+}
+h2 {
+
+    position: absolute;
+    top: 69%;
+    left: 72px;
+
+}
+p {
+    position: absolute;
+    top: 73%;
+    left: 72px;
+}
+a {
+    position: absolute;
+    top: 78%;
+    left: 72px;
+}
+
